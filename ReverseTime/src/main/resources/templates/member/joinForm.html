@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	function formCheck(){
+		let memberid = $('#memberid').val();
+		let memberpw = $('#memberpw').val();
+		let membername = $('#membername').val();
+		let phone = $('#phone').val();
+		let birth = $('#birth').val();
+		let email = $('#email').val();
+		
+		if (memberid.length < 3 || memberid.length > 10) {
+			alert("ID는 3~10자로 입력하세요.");
+			return false;
+		}
+		if (memberpw.length < 3 || memberpw.length > 10) {
+			alert("비밀번호는 3~10자로 입력하세요.");
+			return false;
+		}
+		if (membername == '') {
+			alert("이름을 입력하세요.");
+			return false;
+		}
+		if (phone == '') {
+			alert("전화번호를 입력하세요.");
+			return false;
+		}
+		if (email == '') {
+			alert("이메일을 입력하세요.");
+			return false;
+		}
+		if (birth == '') {
+			alert("생년월일을 입력하세요.");
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+	<header>
+	<h1>[ 회원가입 ]</h1>
+	</header>
+	<section>
+	<form id="joinForm" th:action="@{/member/join}" method="post" onsubmit="return formCheck()">
+	<table>
+		<tr>
+			<th>ID</th>
+			<td>
+				<input type="text" name="memberid" id="memberid"> 
+			</td>
+		</tr>
+		<tr>
+			<th>Password</th>
+			<td><input type="password" name="memberpw" id="memberpw"></td>
+		</tr>
+		<tr>
+			<th>Name</th>
+			<td><input type="text" name="membername" id="membername"></td>
+		</tr>
+		<tr>
+			<th>Phone</th>
+			<td><input type="text" name="phone" id="phone"></td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td><input type="email" name="email" id="email"></td>
+		</tr>
+		<tr>
+			<th>Birth</th>
+			<td><input type="date" name="birth" id="birth"></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<input type="submit" value="가입">
+				<input type="reset" value="다시 쓰기">
+			</td>
+		</tr>
+	</table>
+	</form>
+	</section>
+</body>
+</html>
